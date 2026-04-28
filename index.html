@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Local LoRA Workstation Planner</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <main class="shell">
+      <section class="top-panel">
+        <div>
+          <p class="eyebrow">Single Node Local AI Build</p>
+          <h1>Local LoRA 모델 구축 사양 자동 계산기</h1>
+          <p class="lead">
+            기본값은 Llama 3 8B, LoRA, Local Redis, q-q intent embedding RAG 기준입니다.
+            각 조정 항목을 올리면 어떤 하드웨어 스펙이 올라가는지 함께 표시합니다.
+          </p>
+        </div>
+        <div class="summary-card">
+          <span>예상 총액</span>
+          <strong id="totalPrice">-</strong>
+          <small id="priceNote">실시간 가격 아님, 예상가 기준</small>
+        </div>
+      </section>
+
+      <section class="workspace">
+        <aside class="controls-panel">
+          <div class="field">
+            <label for="modelSelect">학습 모델</label>
+            <select id="modelSelect"></select>
+          </div>
+
+          <div id="controlList" class="control-list"></div>
+        </aside>
+
+        <section class="result-panel">
+          <div class="result-grid">
+            <article class="result-block">
+              <h2>추천 스택</h2>
+              <dl id="stackList"></dl>
+            </article>
+
+            <article class="result-block">
+              <h2>자동 추천 사양</h2>
+              <dl id="specList"></dl>
+            </article>
+          </div>
+
+          <article class="result-block wide">
+            <div class="block-header">
+              <h2>추천 부품 및 예상 가격</h2>
+              <span id="confidenceBadge">기준 사양</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>항목</th>
+                    <th>부품명</th>
+                    <th>예상 가격</th>
+                    <th>비고</th>
+                  </tr>
+                </thead>
+                <tbody id="partsTable"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="result-block wide">
+            <h2>해당 LoRA 모델로 가능한 예시</h2>
+            <div id="examples" class="examples"></div>
+          </article>
+        </section>
+      </section>
+    </main>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
